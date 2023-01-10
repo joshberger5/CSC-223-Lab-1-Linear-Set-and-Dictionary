@@ -45,21 +45,19 @@ public class ArraySet <E> implements List<E>, Set<E>
 	@Override
 	public Object[] toArray() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return _list.toArray();
 	}
 
 	@Override
 	public <T> T[] toArray(T[] a) 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return _list.toArray(a);
 	}
 
 	@Override
 	public boolean add(E e) 
 	{
-		if(_list.contains(e))
+		if(contains(e))
 		{
 			return false;
 		}
@@ -82,7 +80,18 @@ public class ArraySet <E> implements List<E>, Set<E>
 	@Override
 	public boolean addAll(Collection<? extends E> c) 
 	{
-		return addAll(c);
+		boolean valid = false;
+		
+		for(E element : c)
+		{
+			if(!contains(element))
+			{
+				add(element);
+				valid = true;
+			}
+		}
+		return valid;
+		
 	}
 
 	@Override
@@ -124,7 +133,10 @@ public class ArraySet <E> implements List<E>, Set<E>
 	@Override
 	public void add(int index, E element) 
 	{
-		_list.add(index, element);
+		if(!contains(element))
+		{
+			_list.add(index, element);
+		}
 	}
 
 	@Override
@@ -136,7 +148,7 @@ public class ArraySet <E> implements List<E>, Set<E>
 	@Override
 	public int indexOf(Object o) 
 	{
-		return _list.lastIndexOf(o);
+		return _list.indexOf(o);
 	}
 
 	@Override
@@ -164,9 +176,9 @@ public class ArraySet <E> implements List<E>, Set<E>
 	}
 
 	@Override
-	public Spliterator<E> spliterator() {
+	public Spliterator<E> spliterator() 
+	{
 		// TODO Auto-generated method stub
 		return List.super.spliterator();
 	}
-
 }
