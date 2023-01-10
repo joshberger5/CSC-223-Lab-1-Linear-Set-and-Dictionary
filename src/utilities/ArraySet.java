@@ -8,13 +8,13 @@ import java.util.ListIterator;
 import java.util.Set;
 import java.util.Spliterator;
 
-public class ArraySet <E> implements List<E>, Set<E>
+public class ArraySet<E> implements List<E>, Set<E>
 {
 	protected ArrayList<E> _list;
-
-	public ArraySet()
+	
+	public ArraySet() 
 	{
-		// TODO Auto-generated constructor stub
+		_list = new ArrayList<E>();
 	}
 
 	@Override
@@ -36,10 +36,9 @@ public class ArraySet <E> implements List<E>, Set<E>
 	}
 
 	@Override
-	public Iterator<E> iterator() 
-	{	
+	public Iterator<E> iterator() {
 		// TODO Auto-generated method stub
-		return null;
+		return _list.iterator();
 	}
 
 	@Override
@@ -61,7 +60,6 @@ public class ArraySet <E> implements List<E>, Set<E>
 		{
 			return false;
 		}
-		
 		return _list.add(e);
 	}
 
@@ -72,8 +70,8 @@ public class ArraySet <E> implements List<E>, Set<E>
 	}
 
 	@Override
-	public boolean containsAll(Collection<?> c) 
-	{
+	public boolean containsAll(Collection<?> c) {
+		// TODO Auto-generated method stub
 		return _list.containsAll(c);
 	}
 
@@ -91,42 +89,43 @@ public class ArraySet <E> implements List<E>, Set<E>
 			}
 		}
 		return valid;
-		
 	}
 
 	@Override
-	public boolean retainAll(Collection<?> c) 
-	{
+	public boolean retainAll(Collection<?> c) {
 		return _list.retainAll(c);
 	}
 
 	@Override
-	public boolean removeAll(Collection<?> c) 
-	{
+	public boolean removeAll(Collection<?> c) {
 		return _list.removeAll(c);
 	}
 
 	@Override
-	public void clear() 
-	{
+	public void clear() {
 		_list.clear();
 	}
 
 	@Override
-	public boolean addAll(int index, Collection<? extends E> c) 
-	{
-		return _list.addAll(index, c);
+	public boolean addAll(int index, Collection<? extends E> c) {
+		boolean valid = false;
+		
+		for (E element : c)
+		{
+			add(element);
+			valid = true;
+		}
+		
+		return valid;
 	}
 
 	@Override
-	public E get(int index) 
-	{
+	public E get(int index) {
 		return _list.get(index);
 	}
 
 	@Override
-	public E set(int index, E element) 
-	{
+	public E set(int index, E element) {
 		return _list.set(index, element);
 	}
 
@@ -140,8 +139,7 @@ public class ArraySet <E> implements List<E>, Set<E>
 	}
 
 	@Override
-	public E remove(int index) 
-	{
+	public E remove(int index) {
 		return _list.remove(index);
 	}
 
@@ -152,8 +150,7 @@ public class ArraySet <E> implements List<E>, Set<E>
 	}
 
 	@Override
-	public int lastIndexOf(Object o) 
-	{
+	public int lastIndexOf(Object o) {
 		return _list.lastIndexOf(o);
 	}
 
@@ -175,10 +172,10 @@ public class ArraySet <E> implements List<E>, Set<E>
 		return _list.subList(fromIndex, toIndex);
 	}
 
+	
 	@Override
 	public Spliterator<E> spliterator() 
 	{
-		// TODO Auto-generated method stub
-		return List.super.spliterator();
+		return _list.spliterator();
 	}
 }
