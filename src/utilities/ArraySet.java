@@ -18,19 +18,16 @@ public class ArraySet<E> implements List<E>, Set<E>
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
 		return _list.size();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
 		return _list.isEmpty();
 	}
 
 	@Override
 	public boolean contains(Object o) {
-		// TODO Auto-generated method stub
 		return _list.contains(o);
 	}
 
@@ -53,14 +50,18 @@ public class ArraySet<E> implements List<E>, Set<E>
 	}
 
 	@Override
-	public boolean add(E e) {
-		// TODO Auto-generated method stub
+	public boolean add(E e) 
+	{
+		if(_list.contains(e))
+		{
+			return false;
+		}
 		return _list.add(e);
 	}
 
 	@Override
-	public boolean remove(Object o) {
-		// TODO Auto-generated method stub
+	public boolean remove(Object o) 
+	{
 		return _list.remove(o);
 	}
 
@@ -72,85 +73,75 @@ public class ArraySet<E> implements List<E>, Set<E>
 
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
-		// TODO Auto-generated method stub
 		return _list.addAll(c);
 	}
 
 	@Override
 	public boolean retainAll(Collection<?> c) {
-		// TODO Auto-generated method stub
 		return _list.retainAll(c);
 	}
 
 	@Override
 	public boolean removeAll(Collection<?> c) {
-		// TODO Auto-generated method stub
 		return _list.removeAll(c);
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
 		_list.clear();
 	}
 
 	@Override
 	public boolean addAll(int index, Collection<? extends E> c) {
-		// TODO Auto-generated method stub
 		return _list.addAll(index, c);
 	}
 
 	@Override
 	public E get(int index) {
-		// TODO Auto-generated method stub
 		return _list.get(index);
 	}
 
 	@Override
 	public E set(int index, E element) {
-		// TODO Auto-generated method stub
 		return _list.set(index, element);
 	}
 
 	@Override
 	public void add(int index, E element) {
-		// TODO Auto-generated method stub
+		if (!_list.contains(element)) {
 		_list.add(index, element);
+		}
 	}
 
 	@Override
 	public E remove(int index) {
-		// TODO Auto-generated method stub
 		return _list.remove(index);
 	}
 
 	@Override
 	public int indexOf(Object o) {
-		// TODO Auto-generated method stub
 		return _list.indexOf(o);
 	}
 
 	@Override
 	public int lastIndexOf(Object o) {
-		// TODO Auto-generated method stub
 		return _list.lastIndexOf(o);
 	}
 
 	@Override
-	public ListIterator<E> listIterator() {
-		// TODO Auto-generated method stub
+	public ListIterator<E> listIterator() 
+	{
 		return _list.listIterator();
 	}
 
 	@Override
 	public ListIterator<E> listIterator(int index) {
-		// TODO Auto-generated method stub
 		return _list.listIterator(index);
 	}
 
 	@Override
-	public List<E> subList(int fromIndex, int toIndex) {
-		// TODO Auto-generated method stub
+	public List<E> subList(int fromIndex, int toIndex)
+	{
 		return _list.subList(fromIndex, toIndex);
 	}
 
