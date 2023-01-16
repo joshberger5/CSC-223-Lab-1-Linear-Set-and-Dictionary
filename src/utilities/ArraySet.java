@@ -37,7 +37,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 
 	@Override
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
 		return _list.iterator();
 	}
 
@@ -71,15 +70,14 @@ public class ArraySet<E> implements List<E>, Set<E>
 
 	@Override
 	public boolean containsAll(Collection<?> c) {
-		// TODO Auto-generated method stub
 		return _list.containsAll(c);
 	}
 
 	@Override
 	public boolean addAll(Collection<? extends E> c) 
 	{
+		// adds the stuff that is passed in except if it is already in the set
 		boolean valid = false;
-		
 		for(E element : c)
 		{
 			if(!contains(element))
@@ -93,12 +91,29 @@ public class ArraySet<E> implements List<E>, Set<E>
 
 	@Override
 	public boolean retainAll(Collection<?> c) {
-		return _list.retainAll(c);
+		// this set only keeps the stuff that is passed in
+		boolean change = false;
+		// the below for loop goes from back to front so you don't lose your place when remove stuff
+		for (int i = size() - 1; i >= 0; i--) {
+			if (!c.contains(get(i))) {
+				remove(i);
+				change = true;
+			}
+		}
+		return change;
 	}
 
 	@Override
-	public boolean removeAll(Collection<?> c) {
-		return _list.removeAll(c);
+	public boolean removeAll(Collection<?> c) { 
+		// this set removes all the stuff that is passed in
+		boolean change = false;
+		for (Object cElement : c) {
+			if (contains(cElement)) {
+				remove(cElement);
+				change = true;
+			}
+		}
+		return change;
 	}
 
 	@Override
@@ -108,15 +123,16 @@ public class ArraySet<E> implements List<E>, Set<E>
 
 	@Override
 	public boolean addAll(int index, Collection<? extends E> c) {
-		boolean valid = false;
-		
-		for (E element : c)
-		{
-			add(element);
-			valid = true;
+		// adds everything that is passed in at the specified index and moves everything already there to the right
+		boolean changed = false;
+		for (E element : c) {
+			if (!contains(element)) {
+				add(index, element);
+				changed = true;
+				index++;
+			}
 		}
-		
-		return valid;
+		return changed;
 	}
 
 	@Override

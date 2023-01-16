@@ -39,16 +39,20 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 
 	@Override
 	public Value get(Object key) {
+		// checks to see if the passed in key is the same as one of the keys the dictionary already has
+		// then it returns the value at the corresponding index in the dictionary
 		for (int i = 0; i < size(); i++) {
-			if (key == _keys.get(i)) {
+			if (key.equals(_keys.get(i))) {
 				return _values.get(i);
 			}
 		}
+		// returns null if the key is not in the dictionary
 		return null;
 	}
 
 	@Override
 	public Value put(Key key, Value value) {
+		// if the passed-in key is the same as one of the existing keys, replace its value with the one passed in
 		for (int i = 0; i < size(); i++) {
 			if (key.equals(_keys.get(i))) {
 				Value temp = _values.get(i);
@@ -57,6 +61,7 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 				return temp;
 			}
 		}
+		// if the passed key is not in the dictionary add it and the passed value
 		_keys.add(key);
 		_values.add(value);
 		return null;
@@ -64,6 +69,7 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	
 	@Override
 	public Value remove(Object key) {
+		// if the passed key is in the dictionary remove it and return its key
 		for (int i = 0; i < size(); i++) {
 			if (key.equals(_keys.get(i))) {
 				Value temp = _values.get(i);
@@ -72,11 +78,12 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 				return temp;
 			}
 		}
+		// if it is not in the 
 		return null;
 	}
 
 	/*
-	checks to see if the map already includes a key to be copied
+	for each key in the passed map checks to see if the dictionary already includes it
 	if so, replace the value
 	if not, add the key and value
 	*/
@@ -114,8 +121,14 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		return _values;
 	}
 
+	// I have absolutely no idea how to do this one
 	@Override
 	public Set<Entry<Key, Value>> entrySet() {
+		/* ArraySet<Entry<Key, Value>> s = new ArraySet<Entry<Key, Value>>();
+		for (int i = 0; i < _keys.size(); i++) {
+			s.add(entry(_keys.get(i),_values.get(i)));
+		}
+		return s; */
 		return null;
 	}
 
