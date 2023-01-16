@@ -12,6 +12,7 @@ class ArraySetTest
 	@Test
 	void testArraySetCollectionOfE()
 	{		
+		ArraySet<Integer> s = new ArraySet<Integer>();
 	}
 
 	@Test

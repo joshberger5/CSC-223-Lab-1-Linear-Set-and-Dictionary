@@ -78,7 +78,7 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 				return temp;
 			}
 		}
-		// if it is not in the 
+		// if the passed key is not in the dictionary return null
 		return null;
 	}
 
@@ -121,14 +121,9 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		return _values;
 	}
 
-	// I have absolutely no idea how to do this one
+	// need to fix this because putAll won't work without this working too
 	@Override
 	public Set<Entry<Key, Value>> entrySet() {
-		/* ArraySet<Entry<Key, Value>> s = new ArraySet<Entry<Key, Value>>();
-		for (int i = 0; i < _keys.size(); i++) {
-			s.add(entry(_keys.get(i),_values.get(i)));
-		}
-		return s; */
 		return null;
 	}
 
