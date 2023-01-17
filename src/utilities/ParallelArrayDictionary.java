@@ -121,11 +121,14 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		return _values;
 	}
 
+	// still don't really understand
 	@Override
 	public Set<Entry<Key, Value>> entrySet() {
+		/* 
 		Set<Entry<Key, Value>> s = new HashSet<Entry<Key, Value>>();
 		for (int i = 0; i < size(); i++) {
 		}
+		*/
 		return null;
 	}
 
