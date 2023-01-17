@@ -158,6 +158,7 @@ public class ArraySet<E> implements List<E>, Set<E>
 		//initially set to false, will be set to true if an element is added
 		boolean addCheck = false;
 
+		//loop through collection
 		for(E element : c)
 		{
 			if(add(element));
@@ -180,18 +181,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 	public boolean retainAll(Collection<?> c) 
 	{
 		return _list.retainAll(c);
-		/*
-		// this set only keeps the stuff that is passed in
-		boolean change = false;
-		// the below for loop goes from back to front so you don't lose your place when remove stuff
-		for (int i = size() - 1; i >= 0; i--) {
-			if (!c.contains(get(i))) {
-				remove(i);
-				change = true;
-			}
-		}
-		return change;
-		*/
 	}
 
 	/**
@@ -267,8 +256,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 		return _list.get(index);
 
 	}
-
-
 
 	/**
 	 * Replaces the element at the specified position in this list with the specified
