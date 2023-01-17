@@ -24,6 +24,7 @@ class ArraySetTest
 	@Test
 	void testArraySetCollectionOfE()
 	{		
+		// checks the default constructor makes an empty set
 		ArraySet<Integer> s = new ArraySet<Integer>();
 		assertEquals(0, s.size());
 	}

@@ -12,6 +12,7 @@ package utilities;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
@@ -121,15 +122,14 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		return _values;
 	}
 
-	// still don't really understand
+	// make a set with entries for each key and value
 	@Override
 	public Set<Entry<Key, Value>> entrySet() {
-		/* 
 		Set<Entry<Key, Value>> s = new HashSet<Entry<Key, Value>>();
 		for (int i = 0; i < size(); i++) {
+			s.add(new AbstractMap.SimpleEntry<>(_keys.get(i), _values.get(i)));
 		}
-		*/
-		return null;
+		return s;
 	}
 
 }

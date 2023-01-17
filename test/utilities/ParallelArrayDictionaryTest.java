@@ -25,6 +25,7 @@ class ParallelArrayDictionaryTest
 	@Test
 	void testParallelArrayDictionary()
 	{
+		// checks the default constructor makes an empty dictionary
 		ParallelArrayDictionary<Integer, Integer> p = new ParallelArrayDictionary<Integer, Integer>();
 		assertEquals(0, p.size());
 	}
