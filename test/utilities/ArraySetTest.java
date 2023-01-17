@@ -55,16 +55,10 @@ class ArraySetTest
 		}
 		s.addAll(t);
 		assertEquals(20, s.size()); // checks to see if s is bigger by 10 after adding t
-		boolean foundTInS = false;
-		for (int ti = 0; ti < t.size(); ti++) { // checks to make sure at least one of the additions is the same
-			for (int si = 0; si < s.size(); si++) {
-				if (t.get(ti).equals(s.get(si))) {
-					foundTInS = true;
-					break;
-				}
-			}
+		// makes sure each int that was in t was correctly added to s
+		for (int i = 0; i < t.size(); i++) {
+			assertTrue(s.contains(t.get(i)));
 		}
-		assertTrue(foundTInS);
 		s.addAll(t);
 		assertEquals(20, s.size()); // makes sure you can't add repeats
 	}
@@ -82,23 +76,11 @@ class ArraySetTest
 			}
 		}
 		one.retainAll(two);
+		assertEquals(5, two.size());
 		// below checks to see if the sets are the same afterwards
-		boolean oneHasAllOfTwo = false;
-		for (int iO = 0; iO < one.size(); iO++) {
-			boolean thisThingInOneIsInTwo = false;
-			for (int iT = 0; iT < two.size(); iT++) {
-				if (one.get(iO).equals(two.get(iT))) {
-					thisThingInOneIsInTwo = true;
-					oneHasAllOfTwo = true;
-					break;
-				}
-			}
-			if (thisThingInOneIsInTwo == false) {
-				oneHasAllOfTwo = false;
-				break;
-			}
+		for (int i = 0; i < one.size(); i++) {
+			assertTrue(one.contains(two.get(i)));
 		}
-		assertTrue(oneHasAllOfTwo);
 		// testing retain all by passing a set that is larger than this one but has the same values
 		ArraySet<Integer> three = new ArraySet<Integer>();
 		ArraySet<Integer> four = new ArraySet<Integer>();
@@ -119,6 +101,17 @@ class ArraySetTest
 		six.add(5);
 		six.add(6);
 		assertTrue(five.retainAll(six));
+		// testing the same sets
+		ArraySet<Integer> seven = new ArraySet<Integer>();
+		ArraySet<Integer> eight = new ArraySet<Integer>();
+		seven.add(1);
+		seven.add(2);
+		seven.add(3);
+		eight.add(1);
+		eight.add(2);
+		eight.add(3);
+		assertFalse(seven.retainAll(eight));
+		
 	}
 
 	@Test

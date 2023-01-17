@@ -91,9 +91,8 @@ public class ArraySet<E> implements List<E>, Set<E>
 		boolean valid = false;
 		for(E element : c)
 		{
-			if(!contains(element))
+			if(add(element))
 			{
-				add(element);
 				valid = true;
 			}
 		}
@@ -102,6 +101,8 @@ public class ArraySet<E> implements List<E>, Set<E>
 
 	@Override
 	public boolean retainAll(Collection<?> c) {
+		return _list.retainAll(c);
+		/*
 		// this set only keeps the stuff that is passed in
 		boolean change = false;
 		// the below for loop goes from back to front so you don't lose your place when remove stuff
@@ -112,10 +113,13 @@ public class ArraySet<E> implements List<E>, Set<E>
 			}
 		}
 		return change;
+		*/
 	}
 
 	@Override
 	public boolean removeAll(Collection<?> c) { 
+		return _list.removeAll(c);
+		/*
 		// this set removes all the stuff that is passed in
 		boolean change = false;
 		for (Object cElement : c) {
@@ -125,6 +129,7 @@ public class ArraySet<E> implements List<E>, Set<E>
 			}
 		}
 		return change;
+		*/
 	}
 
 	@Override
