@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-/*
-=======
 /**
 >>>>>>> Stashed changes
 * This class tests the implementation of ParallelArrayDictionary.
@@ -15,14 +12,6 @@
 
 package utilities;
 
-<<<<<<< Updated upstream
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.security.KeyStore.Entry;
-import java.util.Map;
-import java.util.TreeMap;
-=======
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -30,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
->>>>>>> Stashed changes
+
 
 import org.junit.jupiter.api.Test;
 
@@ -39,31 +28,16 @@ class ParallelArrayDictionaryTest
 	@Test
 	void testParallelArrayDictionary()
 	{
-<<<<<<< Updated upstream
-		// checks the default constructor makes an empty dictionary
-		ParallelArrayDictionary<Integer, Integer> p = new ParallelArrayDictionary<Integer, Integer>();
-		assertEquals(0, p.size());
-=======
 		//test existence with size 0
 		ParallelArrayDictionary<Integer, String> dict = new ParallelArrayDictionary<Integer, String>();
 		assertEquals(0, dict.size());
 		assertTrue(dict.isEmpty());
->>>>>>> Stashed changes
+
 	}
 
 	@Test
 	void testGet()
 	{
-<<<<<<< Updated upstream
-		ParallelArrayDictionary<Integer, Integer> p = new ParallelArrayDictionary<Integer, Integer>();
-		// using get with a key not in the (empty) dictionary should return null
-		assertEquals(null, p.get(10));
-		p.put(10,20);
-		// using get with a key in the dictionary should return its value
-		assertTrue(p.get(10).equals(20));
-		// using get with a key not in the (unempty) dictionary should return null
-		assertEquals(null, p.get(50));
-=======
 		//dictionary
 		ParallelArrayDictionary<Integer, String> dict = new ParallelArrayDictionary<Integer, String>();
 
@@ -85,28 +59,11 @@ class ParallelArrayDictionaryTest
 
 		//make sure get() didnt add/remove anything
 		assertEquals("[1=001, 2=002, 7=James Bond]", dict.entrySet().toString());
->>>>>>> Stashed changes
 	}
 
 	@Test
 	void testPut()
 	{
-<<<<<<< Updated upstream
-		ParallelArrayDictionary<String, String> opposites = new ParallelArrayDictionary<String, String>();
-		// below checks that putting the pair sun and moon into the dictionary returns null
-		// as sun was not already in the dictionary
-		assertEquals(null, opposites.put("sun", "moon"));
-		// below checks that moon was properly put in as the value for sun
-		assertEquals("moon", opposites.get("sun"));
-		// below checks that it returns moon when putting in the pair sun and replacement
-		// as sun was already in the dictionary and moon is its previous value
-		assertEquals("moon", opposites.put("sun", "replacement"));
-		// below makes sure that replacement was inserted properly
-		assertEquals("replacement", opposites.get("sun"));
-		// below checks adding a new pair
-		assertEquals(null, opposites.put("day", "night"));
-		assertEquals("night", opposites.get("day"));
-=======
 		ParallelArrayDictionary<Integer, String> dict = new ParallelArrayDictionary<Integer, String>();
 
 		//null key: should not add
@@ -162,25 +119,11 @@ class ParallelArrayDictionaryTest
 		dict.put(002, "002");
 		dict.put(007, "James Bond");
 		assertEquals("[0=000, 1=001, 2=002, 7=James Bond]", dict.entrySet().toString());
->>>>>>> Stashed changes
 	}
 
 	@Test
 	void testRemove()
 	{
-<<<<<<< Updated upstream
-		ParallelArrayDictionary<String, String> stateCapitals = new ParallelArrayDictionary<String, String>();
-		// populating the dictionary with the names of states and their capitals
-		stateCapitals.put("Florida", "Tallahassee");
-		stateCapitals.put("Georgia", "Atlanta");
-		stateCapitals.put("South Carolina", "Columbia");
-		stateCapitals.put("North Carolina", "Raleigh");
-		stateCapitals.put("Tennessee", "Nashville");
-		// makes sure that removing a pair properly returns its value
-		assertEquals("Nashville", stateCapitals.remove("Tennessee"));
-		// makes sure that removing a pair twice returns null
-		assertEquals(null, stateCapitals.remove("Tennessee"));
-=======
 		ParallelArrayDictionary<Integer, String> empty = new ParallelArrayDictionary<Integer, String>(); 
 
 		ParallelArrayDictionary<Integer, String> dict = new ParallelArrayDictionary<Integer, String>();
@@ -203,30 +146,13 @@ class ParallelArrayDictionaryTest
 		assertEquals("300", dict.remove(300));
 		assertEquals("400", dict.remove(400));
 		assertEquals("[200=200, 7=James Bond]", dict.entrySet().toString());
->>>>>>> Stashed changes
+
 	}
 
 	// this test or the original method won't work until I fix entrySet()
 	@Test
 	void testPutAll()
 	{
-<<<<<<< Updated upstream
-		ParallelArrayDictionary<Integer, String> myDictionary = new ParallelArrayDictionary<Integer, String>();
-		Map<Integer, String> dictionaryToPut = new TreeMap<Integer, String>();
-		dictionaryToPut.put(1, "A");
-		dictionaryToPut.put(2, "B");
-		dictionaryToPut.put(3, "C");
-		dictionaryToPut.put(4, "D");
-		dictionaryToPut.put(5, "E");
-		myDictionary.putAll(dictionaryToPut);
-		// makes sure that the size increased properly
-		assertEquals(5, myDictionary.size());
-		// makes sure that myDictionary added all the pairs
-		for (Map.Entry<Integer, String> e : dictionaryToPut.entrySet()) {
-			assertTrue(myDictionary.containsKey(e.getKey()));
-			assertTrue(myDictionary.containsValue(e.getValue()));
-		}
-=======
 		//empty dictionary
 		ParallelArrayDictionary<Integer, String> dict = new ParallelArrayDictionary<Integer, String>();
 
@@ -266,27 +192,11 @@ class ParallelArrayDictionaryTest
 		assertEquals("[1, 2, 7]", dict.keySet().toString());
 		assertEquals("[001, 002, James Bond]", dict.values().toString());
 		assertEquals("[1=001, 2=002, 7=James Bond]", dict.entrySet().toString());
-
->>>>>>> Stashed changes
 	}
 
 	@Test
 	void testClear()
 	{
-<<<<<<< Updated upstream
-		ParallelArrayDictionary<Integer, Integer> p = new ParallelArrayDictionary<Integer, Integer>();
-		// populate the dictionary 
-		for (int i = 1; i < 11; i++) {
-			p.put(i, 10*i);
-		}
-		p.clear();
-		// make sure that using get with all the keys will return null since they should not be in the dictionary anymore
-		for (int i = 0; i < 11; i++) {
-			assertEquals(null, p.get(i));
-		}
-		// also the size should be 0 since its empty
-		assertEquals(0, p.size());
-=======
 		//create dictionary
 		ParallelArrayDictionary<Integer, String> dict = new ParallelArrayDictionary<Integer, String>();
 
@@ -314,6 +224,5 @@ class ParallelArrayDictionaryTest
 		assertNull(dict.get(002));
 		assertNull(dict.get(007));
 
->>>>>>> Stashed changes
 	}
 }

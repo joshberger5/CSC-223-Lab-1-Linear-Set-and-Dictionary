@@ -1,15 +1,3 @@
-<<<<<<< Updated upstream
-/*
-* This class implements the List and Map interfaces.
-* It overrides the abstract methods of the List and Set interface.
-*
-* <p>Bugs: (a list of bugs and / or other problems)
-*
-* @author Joshua Berger, Caden Parry
-* @date 1/17/2023
-*/
-
-=======
 /**
  * A collection that contains no duplicate elements. More formally, sets contain no pair of elements 
  * e1 and e2 such that e1.equals(e2), and at most one null element. As implied by its name, this 
@@ -19,7 +7,6 @@
  * @author <Caden Parry, Josh Berger>
  * @date <Jan 17 2023>
  */
->>>>>>> Stashed changes
 
 package utilities;
 
@@ -80,12 +67,8 @@ public class ArraySet<E> implements List<E>, Set<E>
 	 *  @return Iterator<E> object that can be used to iterate through the set
 	 */
 	@Override
-<<<<<<< Updated upstream
-	public Iterator<E> iterator() {
-=======
 	public Iterator<E> iterator() 
 	{
->>>>>>> Stashed changes
 		return _list.iterator();
 	}
 
@@ -155,12 +138,8 @@ public class ArraySet<E> implements List<E>, Set<E>
 	 * @return true if this list contains all of the elements of the specified collection
 	 */
 	@Override
-<<<<<<< Updated upstream
-	public boolean containsAll(Collection<?> c) {
-=======
 	public boolean containsAll(Collection<?> c) 
 	{
->>>>>>> Stashed changes
 		return _list.containsAll(c);
 	}
 
@@ -175,15 +154,7 @@ public class ArraySet<E> implements List<E>, Set<E>
 	@Override
 	public boolean addAll(Collection<? extends E> c) 
 	{
-<<<<<<< Updated upstream
-		// adds the stuff that is passed in except if it is already in the set
-		boolean valid = false;
-		for(E element : c)
-		{
-			if(add(element))
-			{
-				valid = true;
-=======
+
 		//initially set to false, will be set to true if an element is added
 		boolean addCheck = false;
 
@@ -193,7 +164,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 			{
 				//valid becomes true if an element in the collection is added
 				addCheck = true;
->>>>>>> Stashed changes
 			}
 		}
 		return addCheck;
@@ -233,24 +203,10 @@ public class ArraySet<E> implements List<E>, Set<E>
 	 * @return true if this list changed as a result of the call
 	 */
 	@Override
-<<<<<<< Updated upstream
-	public boolean removeAll(Collection<?> c) { 
-=======
+
 	public boolean removeAll(Collection<?> c) 
 	{
->>>>>>> Stashed changes
 		return _list.removeAll(c);
-		/*
-		// this set removes all the stuff that is passed in
-		boolean change = false;
-		for (Object cElement : c) {
-			if (contains(cElement)) {
-				remove(cElement);
-				change = true;
-			}
-		}
-		return change;
-		*/
 	}
 
 	/**
@@ -277,19 +233,7 @@ public class ArraySet<E> implements List<E>, Set<E>
 	 * @return true if this list changed as a result of the call
 	 */
 	@Override
-<<<<<<< Updated upstream
-	public boolean addAll(int index, Collection<? extends E> c) {
-		// adds everything that is passed in at the specified index and moves everything already there to the right
-		boolean changed = false;
-		for (E element : c) {
-			if (!contains(element)) {
-				add(index, element);
-				changed = true;
-				index++;
-			}
-		}
-		return changed;
-=======
+
 	public boolean addAll(int index, Collection<? extends E> c) 
 	{
 		//initially set to false, will be set to true if an element is added
@@ -308,7 +252,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 			}
 		}
 		return valid;
->>>>>>> Stashed changes
 	}
 
 	/**
