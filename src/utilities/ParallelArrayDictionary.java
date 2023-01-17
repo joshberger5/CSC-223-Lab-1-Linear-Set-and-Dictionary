@@ -1,6 +1,17 @@
+/*
+* This class implements the Map interface.
+* It overrides the abstract methods of the Map interface.
+*
+* <p>Bugs: (a list of bugs and / or other problems)
+*
+* @author Joshua Berger, Caden Parry
+* @date 1/17/2023
+*/
+
 package utilities;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
@@ -31,6 +42,15 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	public boolean containsKey(Object key) {
 		return _keys.contains(key);
 	}
+	
+	private int indexOf(Object key) {
+		for (int i = 0; i < size(); i++) {
+			if (key.equals(_keys.get(i))) {
+				return i;
+			}
+		}
+		return -1;
+	}
 
 	@Override
 	public boolean containsValue(Object value) {
@@ -41,68 +61,48 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	public Value get(Object key) {
 		// checks to see if the passed in key is the same as one of the keys the dictionary already has
 		// then it returns the value at the corresponding index in the dictionary
-		for (int i = 0; i < size(); i++) {
-			if (key.equals(_keys.get(i))) {
-				return _values.get(i);
-			}
-		}
+		int index = indexOf(key);
+		if (index > -1) return _values.get(index);
 		// returns null if the key is not in the dictionary
-		return null;
-	}
-
-	@Override
-	public Value put(Key key, Value value) {
-		// if the passed-in key is the same as one of the existing keys, replace its value with the one passed in
-		for (int i = 0; i < size(); i++) {
-			if (key.equals(_keys.get(i))) {
-				Value temp = _values.get(i);
-				_values.remove(i);
-				_values.add(i, value);
-				return temp;
-			}
-		}
-		// if the passed key is not in the dictionary add it and the passed value
-		_keys.add(key);
-		_values.add(value);
 		return null;
 	}
 	
 	@Override
 	public Value remove(Object key) {
 		// if the passed key is in the dictionary remove it and return its key
-		for (int i = 0; i < size(); i++) {
-			if (key.equals(_keys.get(i))) {
-				Value temp = _values.get(i);
-				_keys.remove(i);
-				_values.remove(i);
-				return temp;
-			}
+		int index = indexOf(key);
+		if (index > -1) {
+			Value temp = _values.get(index);
+			_keys.remove(index);
+			_values.remove(index);
+			return temp;
 		}
 		// if the passed key is not in the dictionary return null
 		return null;
 	}
 
-	/*
-	for each key in the passed map checks to see if the dictionary already includes it
-	if so, replace the value
-	if not, add the key and value
-	*/
+	// calls put for each key in the map that is passed in
 	@Override
 	public void putAll(Map<? extends Key, ? extends Value> m) {
 		for (Entry<? extends Key, ? extends Value> e : m.entrySet()) {
-			boolean repeat = false;
-			for (int i = 0; i < size(); i++) {
-				if (_keys.get(i).equals(e.getKey())) {
-					repeat = true;
-					_values.remove(i);
-					_values.add(i, e.getValue());
-				}
-			}
-			if (repeat == false) {
-			_keys.add(e.getKey());
-			_values.add(e.getValue());
-			}
+			put(e.getKey(), e.getValue());
 		}
+	}
+	
+	@Override
+	public Value put(Key key, Value value) {
+		// if the passed-in key is the same as one of the existing keys, replace its value with the one passed in
+		int index = indexOf(key);
+		if (index > -1) {
+			Value temp = _values.get(index);
+			_values.remove(index);
+			_values.add(index, value);
+			return temp;
+		}
+		// if the passed key is not in the dictionary add it and the passed value
+		_keys.add(key);
+		_values.add(value);
+		return null;
 	}
 
 	@Override
@@ -121,9 +121,11 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		return _values;
 	}
 
-	// need to fix this because putAll won't work without this working too
 	@Override
 	public Set<Entry<Key, Value>> entrySet() {
+		Set<Entry<Key, Value>> s = new HashSet<Entry<Key, Value>>();
+		for (int i = 0; i < size(); i++) {
+		}
 		return null;
 	}
 

@@ -1,3 +1,14 @@
+/*
+* This class implements the List and Map interfaces.
+* It overrides the abstract methods of the List and Set interface.
+*
+* <p>Bugs: (a list of bugs and / or other problems)
+*
+* @author Joshua Berger, Caden Parry
+* @date 1/17/2023
+*/
+
+
 package utilities;
 
 import java.util.ArrayList;

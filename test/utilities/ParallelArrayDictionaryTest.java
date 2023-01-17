@@ -1,17 +1,32 @@
+/*
+* This class tests the implementation of ParallelArrayDictionary.
+* It attests to the functionality of the default constructor and the methods:
+* get(), put(), remove(), putAll(), clear()
+*
+* <p>Bugs: (a list of bugs and / or other problems)
+*
+* @author Joshua Berger, Caden Parry
+* @date 1/17/2023
+*/
+
 package utilities;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import java.security.KeyStore.Entry;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.junit.jupiter.api.Test;
 
 class ParallelArrayDictionaryTest
 {
 	@Test
-	// I don't know what you're supposed to test for this one
 	void testParallelArrayDictionary()
 	{
 		ParallelArrayDictionary<Integer, Integer> p = new ParallelArrayDictionary<Integer, Integer>();
+		assertEquals(0, p.size());
 	}
 
 	@Test
@@ -66,16 +81,21 @@ class ParallelArrayDictionaryTest
 	@Test
 	void testPutAll()
 	{
-		/* 
 		ParallelArrayDictionary<Integer, String> myDictionary = new ParallelArrayDictionary<Integer, String>();
-		ParallelArrayDictionary<Integer, String> dictionaryToPut = new ParallelArrayDictionary<Integer, String>();
+		Map<Integer, String> dictionaryToPut = new TreeMap<Integer, String>();
 		dictionaryToPut.put(1, "A");
 		dictionaryToPut.put(2, "B");
 		dictionaryToPut.put(3, "C");
 		dictionaryToPut.put(4, "D");
 		dictionaryToPut.put(5, "E");
 		myDictionary.putAll(dictionaryToPut);
-		*/
+		// makes sure that the size increased properly
+		assertEquals(5, myDictionary.size());
+		// makes sure that myDictionary added all the pairs
+		for (Map.Entry<Integer, String> e : dictionaryToPut.entrySet()) {
+			assertTrue(myDictionary.containsKey(e.getKey()));
+			assertTrue(myDictionary.containsValue(e.getValue()));
+		}
 	}
 
 	@Test

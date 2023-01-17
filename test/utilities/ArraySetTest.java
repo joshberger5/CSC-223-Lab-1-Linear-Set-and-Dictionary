@@ -1,18 +1,31 @@
+/*
+* This class tests the implementation of ArraySet.
+* It attests to the functionality of the default constructor and the methods:
+* add(), addAll(), retainAll(), removeAll(), AddAll(passing the index to start at)
+*
+* <p>Bugs: (a list of bugs and / or other problems)
+*
+* @author Joshua Berger, Caden Parry
+* @date 1/17/2023
+*/
+
 package utilities;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Collection;
+
 import org.junit.jupiter.api.Test;
 
 class ArraySetTest
 {
-	// I don't know what you're supposed to test for this one
 	@Test
 	void testArraySetCollectionOfE()
 	{		
 		ArraySet<Integer> s = new ArraySet<Integer>();
+		assertEquals(0, s.size());
 	}
 
 	@Test
